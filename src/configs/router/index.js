@@ -1,6 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Home, NewsDetail, Orders, OrderDetail, Help, Inbox, Account, ScanQRCode } from '../../containers/pages';
+import { Home, NewsDetail, Orders, OrderDetail, Help, Inbox, Account, ScanQRCode, BarCodeScanner } from '../../containers/pages';
 
 const HomeStack = createStackNavigator(
     {
