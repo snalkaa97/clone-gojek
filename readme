@@ -1,0 +1,24 @@
+import GopayFeature from './src/components/molecules/GopayFeature';
+
+// sample function component
+// const GopayFeature = props => {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Image style={{ width: 36, height: 36 }} source={props.image}></Image>
+//       <Text style={{ fontSize: 13, fontWeight: 'bold', color: 'white', marginTop: 15 }}>{props.name}</Text>
+//     </View>
+//   );
+// };
+
+// sample class component
+// class GopayFeature extends Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Image style={{ width: 36, height: 36 }} source={this.props.image}></Image>
+//         <Text style={{ fontSize: 13, fontWeight: 'bold', color: 'white', marginTop: 15 }}>{this.props.name}</Text>
+//       </View>
+//     )
+//   }
+// }
+
