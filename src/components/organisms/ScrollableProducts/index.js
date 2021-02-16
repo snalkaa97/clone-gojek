@@ -1,8 +1,36 @@
 import React, { Component } from 'react'
 import { Text, View, Image, ScrollView } from 'react-native'
 import  ScrollableItem from '../../molecules/ScrollableItem'
+import Axios from 'react-native-axios'
+
+
 
 export class ScollableProducts extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            foods: [],
+        };
+    }
+
+    sendGetRequest = async () => {
+        try {
+            const resp = await Axios.get('https://demo.openbill.bestekno.id/api/menu/category?limit=10&offset=0&code=FOOD');
+            console.log(resp.data);
+            this.setState({
+                foods: resp.data.data.rows,
+            });
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+    };
+
+    componentDidMount(){
+        this.sendGetRequest();
+    }
+
     render() {
         return (
             <View>
@@ -14,11 +42,15 @@ export class ScollableProducts extends Component {
                     <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#61A756' }}>See All</Text>
                 </View>
                 <ScrollView horizontal style={{ flexDirection: 'row', paddingLeft: 16 }}>
-                    <ScrollableItem name='KFC Aeon Mall' image={require('../../../assets/dummy/go-food-kfc.jpg')} />
-                    <ScrollableItem name='Bakmi GM Sarinah' image={require('../../../assets/dummy/go-food-gm.jpg')} />
-                    <ScrollableItem name='Martabak Orins' image={require('../../../assets/dummy/go-food-orins.jpg')} />
-                    <ScrollableItem name='Martabak Bangka' image={require('../../../assets/dummy/go-food-banka.jpg')} />
-                    <ScrollableItem name='Martabak Boss' image={require('../../../assets/dummy/go-food-pak-boss.jpg')} />
+                    {
+                        this.state.foods.map((i) => {
+                            const img = 'https://demo.openbill.bestekno.id/uploads/category/' + i.image;
+                            console.log(img)
+                            return (
+                                <ScrollableItem name={i.title} image={{uri: img}} />
+                            )
+                        })
+                    }
                 </ScrollView>
                 <View style={{ borderBottomWidth: 1, borderBottomColor: '#E8E9ED', marginTop: 16, marginHorizontal: 16 }}></View>
             </View>
